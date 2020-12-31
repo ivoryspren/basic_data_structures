@@ -10,7 +10,7 @@ class Node(object):
         return self.data
     def set_data (self, d):
         self.data = d
-class SingleLinkedList (object):
+class BinaryTree (object):
     def __init__(self, r=None):
         self.root = r
         self.size = 0
@@ -24,11 +24,11 @@ class SingleLinkedList (object):
         #this_node = self.root
         prev_node = None
         if this_node.get_data() == d:
-            print("d is equal to: " + d)
+            print("d is equal to: " + str(d))
             if prev_node:
                 prev_node.set_next(this_node.get_next())
             else:
-                self.root = this_node.get_next()
+                self.root = this_node
             self.size -= 1
             print("d removed")
             return True
@@ -39,21 +39,22 @@ class SingleLinkedList (object):
                 return self.remove(this_node.get_next(),d)
     def find (self, this_node, d):
         if this_node.get_data() == d:
-            print("d is equal to: " + d)
+            print("d is equal to: " + str(d))
             return d
         else:
             if this_node.get_next() == None:
-                print("not found")
                 return None
             else:
                 return self.find(this_node.get_next(),d)
 
-myList = SingleLinkedList()
-myList.add("Breakfast")
-myList.add("Lunch")
-myList.add("Dinner")
-#x = myList.find(myList.root,"Breakfast")
-y = myList.remove(myList.root,"Breakfast")
+myList = BinaryTree()
+myList.add(5)
+myList.add(17)
+myList.add(23)
+#x = myList.find(myList.root,5)
+y = myList.remove(myList.root,5)
+#print(x)
 print(y)
-x = myList.find(myList.root,"Breakfast")
+x = myList.find(myList.root,5)
+print(x)
 #print(myList.root.get_next().get_data())
